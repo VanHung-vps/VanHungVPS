@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFaqAccordion();
   startSocialProofLoop();
   setupScrollProgress();
+  initNumberCountUp();
+  setupClickRipples();
+  setupScrollReveal();
 });
 
 // 1. ÁP DỤNG CẤU HÌNH SHOP LÊN GIAO DIỆN
@@ -179,6 +182,7 @@ function renderVpsPackages(vpsList, selectedMonths = 1) {
       </div>
     `;
   }).join('');
+  if (typeof setupScrollReveal === 'function') setupScrollReveal();
 }
 
 // BỘ CHUYỂN CHU KỲ THANH TOÁN VPS (1, 3, 6, 12 THÁNG)
@@ -279,6 +283,7 @@ function renderServices(services) {
       </div>
     `;
   }).join('');
+  if (typeof setupScrollReveal === 'function') setupScrollReveal();
 }
 
 // 5. RENDER BẢNG QUY ĐỔI NGỌC THẺ CAROT (ĐÃ BỎ HOÀN TOÀN CỘT VÀ THÔNG TIN NGUỒN NHẬP)
@@ -577,4 +582,91 @@ function setupScrollProgress() {
       btn.classList.remove('show');
     }
   });
+}
+
+// 12. HIỆU ỨNG ĐẾM SỐ TĂNG DẦN (NUMBER COUNT-UP ANIMATION)
+function initNumberCountUp() {
+  const statElements = document.querySelectorAll('.h-stat-num[data-count]');
+  if (!statElements.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      obs.unobserve(el);
+
+      const target = parseFloat(el.getAttribute('data-count'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      const duration = 1500; // ms
+      const startTime = performance.now();
+
+      function updateNumber(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Easing out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentVal = target * easeOut;
+
+        el.textContent = currentVal.toFixed(decimals) + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateNumber);
+        } else {
+          el.textContent = (decimals > 0 ? target.toFixed(decimals) : target) + suffix;
+        }
+      }
+
+      requestAnimationFrame(updateNumber);
+    });
+  }, { threshold: 0.15 });
+
+  statElements.forEach(el => observer.observe(el));
+}
+
+// 13. HIỆU ỨNG SÓNG ÁNH SÁNG KHI NHẤP CHUỘT (CYBER CLICK RIPPLE)
+function setupClickRipples() {
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-primary, .btn-secondary, .calc-chip, .tab-btn, .cycle-tab-btn, .mobile-nav-btn');
+    if (!btn) return;
+
+    const rect = btn.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'cyber-click-ripple';
+    
+    const size = Math.max(rect.width, rect.height) * 1.5;
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+    btn.appendChild(ripple);
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  });
+}
+
+// 14. HIỆU ỨNG XUẤT HIỆN KHI CUỘN TRANG (SCROLL REVEAL)
+function setupScrollReveal() {
+  const targets = document.querySelectorAll('.vps-card, .service-card, .review-card, .faq-item, .trust-item, .onboarding-step');
+  
+  targets.forEach((el, index) => {
+    if (!el.classList.contains('scroll-reveal-item')) {
+      el.classList.add('scroll-reveal-item');
+      // Nhẹ nhàng delay để tạo hiệu ứng nối tiếp (stagger)
+      el.style.transitionDelay = `${(index % 3) * 0.08}s`;
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  targets.forEach(el => observer.observe(el));
 }

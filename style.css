@@ -3029,3 +3029,138 @@ body {
   }
 }
 
+/* ==========================================================================
+   ADVANCED CYBER EFFECTS & MICRO-ANIMATIONS
+   ========================================================================== */
+
+/* 1. Radar Ping Wave on live dots */
+.ticker-live-dot, .chip-dot, .live-status-dot {
+  position: relative;
+}
+
+.ticker-live-dot::before, .chip-dot::before, .live-status-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  box-shadow: inherit;
+  animation: radarPing 2s infinite cubic-bezier(0, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.85;
+  }
+  75%, 100% {
+    transform: translate(-50%, -50%) scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* 2. Holographic Shimmer Beam Sweep on CTA buttons */
+.btn-primary, .hero-btn-main, .btn-zalo-top {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after, .btn-zalo-top::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: shimmerSweep 4.5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+  0%, 75% { left: -75%; }
+  100% { left: 160%; }
+}
+
+/* 3. Cyber Rotating Border Beam on HOT Card */
+.vps-card.is-hot {
+  position: relative;
+}
+
+.vps-card.is-hot::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(245, 158, 11, 0.9) 60deg,
+    rgba(6, 182, 212, 0.9) 120deg,
+    transparent 180deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderBeamRotate 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes borderBeamRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 4. Cyber Click Ripple Effect */
+.cyber-click-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.5) 0%, rgba(6, 182, 212, 0) 70%);
+  transform: scale(0);
+  animation: rippleGlow 0.55s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes rippleGlow {
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* 5. Scroll Reveal Smooth Glide */
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 6. Subtle Pulse on Hero Badges */
+.vps-badge-pill, .badge-discount, .badge-hot {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.vps-badge-pill:hover, .badge-discount:hover, .badge-hot:hover {
+  transform: scale(1.06);
+}
+
