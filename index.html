@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>VanHungVPS - Thuê VPS Treo Game & Dịch Vụ Hiệp Sĩ Online 6 Server</title>
+  <meta name="description" content="VanHungVPS - Dịch vụ cho thuê máy chủ ảo VPS Windows hỗ trợ tool mod treo 40 - 160 acc Hiệp Sĩ Online 24/24. Cung cấp vàng 6 server, nạp ngọc thẻ Carot chiết khấu cao 14.5% và up đệ tử uy tín!">
+  <meta name="keywords" content="vanhungvps, vps van hung, hiệp sĩ online, hso, thuê vps hso, vps treo hso, tool mod hso, nạp thẻ carot hso, mua vàng hso">
+  
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="VanHungVPS - Thuê VPS Mod HSO & Dịch Vụ Game Hiệp Sĩ Online Uy Tín">
+  <meta property="og:description" content="VanHungVPS chuyên cung cấp VPS Windows treo 40 đến 160 acc HSO, tặng Tool Mod Auto độc quyền và nạp ngọc thẻ Carot chiết khấu cao 14.5%.">
+  <meta property="og:image" content="assets/hero_banner.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="topNavbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" id="brandLogoLink">
+        <div class="logo-icon-wrap">
+          <span class="logo-icon">⚔️</span>
+          <div class="logo-glow"></div>
+        </div>
+        <div class="brand-text">
+          <h1 id="brandTitle">VANHUNG VPS</h1>
+          <p id="brandSubtitle">THUÊ VPS & DỊCH VỤ GAME HSO</p>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenuList">
+        <li class="nav-item">
+          <a href="javascript:void(0)" onclick="switchTab('tabVps')" class="active" id="navVpsBtn">
+            <span class="nav-ico">🖥️</span> Thuê VPS Mod HSO
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" onclick="switchTab('tabDichVu')" id="navDichVuBtn">
+            <span class="nav-ico">💎</span> Dịch Vụ Game
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#trustSection" id="navAboutBtn">
+            <span class="nav-ico">⭐</span> Uy Tín & Cam Kết
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="https://zalo.me/0996548564" target="_blank" class="btn-zalo-top" id="navZaloBtn">
+          <div class="zalo-ico-circle">💬</div>
+          <div class="zalo-top-text">
+            <span class="zalo-top-title">Tư Vấn Zalo 24/7</span>
+            <span class="zalo-top-num">0996.548.564 (Văn Hưng)</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CYBER LIVE TICKER BAR (TRẠNG THÁI HỆ THỐNG THỜI GIAN THỰC) -->
+  <div class="cyber-ticker-bar" id="liveTicker">
+    <div class="ticker-content-track">
+      <div class="ticker-item"><span class="ticker-live-dot"></span> HỆ THỐNG TRỰC TUYẾN 24/24</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">⚡ <strong>Ping 1ms</strong> - Tốc độ mạng 1Gbps không giới hạn</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">🖥️ <strong>150+ Máy Chủ VPS HSO</strong> đang hoạt động ổn định</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">🎁 <strong>Tặng Tool Mod Auto</strong> độc quyền & Proxy IPv4 sạch</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">💎 <strong>Thẻ Carot 10k = 8.500đ</strong> - Chiết khấu 14.5% nhận đủ KM x2, x3</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">👑 Hỗ trợ kỹ thuật trực tiếp 1-1 từ <strong>Văn Hưng (0996.548.564)</strong></div>
+      <div class="ticker-separator">•</div>
+      <!-- Duplicate for seamless infinite loop -->
+      <div class="ticker-item"><span class="ticker-live-dot"></span> HỆ THỐNG TRỰC TUYẾN 24/24</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">⚡ <strong>Ping 1ms</strong> - Tốc độ mạng 1Gbps không giới hạn</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">🖥️ <strong>150+ Máy Chủ VPS HSO</strong> đang hoạt động ổn định</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">🎁 <strong>Tặng Tool Mod Auto</strong> độc quyền & Proxy IPv4 sạch</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">💎 <strong>Thẻ Carot 10k = 8.500đ</strong> - Chiết khấu 14.5% nhận đủ KM x2, x3</div>
+      <div class="ticker-separator">•</div>
+      <div class="ticker-item">👑 Hỗ trợ kỹ thuật trực tiếp 1-1 từ <strong>Văn Hưng (0996.548.564)</strong></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO BANNER SECTION -->
+    <section class="hero-section" id="heroSection">
+      <div class="container">
+        <div class="hero-grid-wrapper">
+          <!-- LEFT: HERO CONTENT & VALUE PROPOSITION -->
+          <div class="hero-main-card">
+            <div class="hero-card-glow-edge"></div>
+            
+            <div class="hero-tag-glow">
+              <span class="live-dot"></span> HỆ THỐNG VPS MOD HSO & DỊCH VỤ GAME UY TÍN SỐ 1
+            </div>
+
+            <h2 class="hero-headline">
+              Chuyên Cho Thuê VPS <br>
+              <span class="hero-glow-gold">Treo 40 Đến 160 Acc</span> 24/24
+            </h2>
+
+            <p class="hero-subtitle">
+              Máy chủ ảo Windows SSD tốc độ cao, cài sẵn MicroEmulator & Tool Mod Auto độc quyền (Phó bản, Đập đồ, Thu mỏ). Bán vàng 6 server và Nạp ngọc thẻ Carot mốc 10k chỉ <strong>8.500đ</strong>!
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="javascript:void(0)" onclick="switchTab('tabVps')" class="btn-primary hero-btn-main" id="heroVpsCta">
+                <span>🖥️</span> Bảng Giá Thuê VPS
+              </a>
+              <a href="https://zalo.me/0996548564" target="_blank" class="btn-zalo-hero" id="heroZaloCta">
+                <span>💬</span> Zalo: 0996.548.564 (Văn Hưng)
+              </a>
+            </div>
+
+            <!-- HERO LIVE METRICS STATS COUNTER -->
+            <div class="hero-live-stats">
+              <div class="h-stat-item">
+                <span class="h-stat-num">150+</span>
+                <span class="h-stat-lbl">VPS Đang Chạy</span>
+              </div>
+              <div class="h-stat-divider"></div>
+              <div class="h-stat-item">
+                <span class="h-stat-num">99.9%</span>
+                <span class="h-stat-lbl">Uptime 24/24</span>
+              </div>
+              <div class="h-stat-divider"></div>
+              <div class="h-stat-item">
+                <span class="h-stat-num">1 Phút</span>
+                <span class="h-stat-lbl">Bàn Giao Xong</span>
+              </div>
+              <div class="h-stat-divider"></div>
+              <div class="h-stat-item">
+                <span class="h-stat-num">14.5%</span>
+                <span class="h-stat-lbl">CK Nạp Carot</span>
+              </div>
+            </div>
+
+            <!-- HERO QUICK FEATURES (4 CHIPS) -->
+            <div class="hero-quick-features">
+              <div class="q-feat">
+                <span class="q-icon">⚡</span>
+                <div class="q-text">
+                  <strong>Treo 40 - 160 Acc</strong>
+                  <small>Auto Reconnect 24/24</small>
+                </div>
+              </div>
+              <div class="q-feat">
+                <span class="q-icon">🎁</span>
+                <div class="q-text">
+                  <strong>Tặng Tool Mod Auto</strong>
+                  <small>Tặng Proxy IPv4 sạch</small>
+                </div>
+              </div>
+              <div class="q-feat">
+                <span class="q-icon">💎</span>
+                <div class="q-text">
+                  <strong>Thẻ Carot 10k=8.5k</strong>
+                  <small>Hưởng trọn KM x2, x3</small>
+                </div>
+              </div>
+              <div class="q-feat">
+                <span class="q-icon">👑</span>
+                <div class="q-text">
+                  <strong>Văn Hưng Setup</strong>
+                  <small>Hỗ trợ nhiệt tình 1-1</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: HERO ARTWORK SHOWCASE -->
+          <div class="hero-visual-card">
+            <div class="hero-art-frame">
+              <img src="assets/hero_banner.jpg" alt="Hiệp Sĩ Online Knight" class="hero-art-img" loading="eager">
+              <div class="hero-art-ambient"></div>
+
+              <!-- Floating Chips on Banner -->
+              <div class="art-floating-chip chip-top-left">
+                <span class="chip-icon">🖥️</span>
+                <div class="chip-info">
+                  <strong>VPS 1-1 đến 4-8</strong>
+                  <small>Treo 40 - 160 Nick</small>
+                </div>
+              </div>
+
+              <div class="art-floating-chip chip-top-right">
+                <span class="chip-icon">⚡</span>
+                <div class="chip-info">
+                  <strong>Ping 1-2ms</strong>
+                  <small>Anti-DDoS Game</small>
+                </div>
+              </div>
+
+              <div class="art-floating-chip chip-bottom-left">
+                <span class="chip-icon">🎁</span>
+                <div class="chip-info">
+                  <strong>Tặng Full Tool Auto</strong>
+                  <small>Phó Bản, Đập Đồ, Thu Mỏ</small>
+                </div>
+              </div>
+
+              <div class="art-floating-chip chip-bottom-right">
+                <span class="chip-icon">💎</span>
+                <div class="chip-info">
+                  <strong>Thẻ Carot Chiết Khấu</strong>
+                  <small>Mốc 10k chỉ 8.500đ</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRUST BADGES -->
+        <div class="trust-bar" id="trustSection">
+          <div class="trust-item">
+            <div class="trust-icon">🛡️</div>
+            <div class="trust-text">
+              <h4>Bảo Mật 100%</h4>
+              <p>Toàn quyền quản trị, bảo mật tài khoản tuyệt đối</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">⚡</div>
+            <div class="trust-text">
+              <h4>Kích Hoạt Siêu Tốc</h4>
+              <p>Bàn giao VPS & nạp thẻ Carot chỉ sau 1 phút</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">👑</div>
+            <div class="trust-text">
+              <h4>Hỗ Trợ Setup 1-1</h4>
+              <p>Cài sẵn Tool Mod Auto, quản lý trên iOS & Android</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">💬</div>
+            <div class="trust-text">
+              <h4>Hỗ Trợ 24/7</h4>
+              <p>Tư vấn & hỗ trợ kỹ thuật trực tiếp qua Zalo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN SECTION TABS -->
+    <div class="container">
+      <div class="main-tabs-wrapper">
+        <div class="main-tabs">
+          <button class="tab-btn active" data-tab="tabVps" id="tabBtnVps">
+            <span>🖥️</span> THUÊ VPS MOD HSO
+          </button>
+          <button class="tab-btn" data-tab="tabDichVu" id="tabBtnDichVu">
+            <span>💎</span> DỊCH VỤ GAME HSO
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: THUÊ VPS MOD HSO -->
+      <section id="tabVps" class="tab-content active">
+        <div class="section-title-wrap">
+          <div class="vps-tag-badge">⚡ CHUYÊN DỤNG TREO GAME HSO 24/24</div>
+          <h2 class="section-title">Cho Thuê VPS <span>Hỗ Trợ Mod HSO - Bảng Giá Siêu Rẻ</span></h2>
+          <p class="section-desc">
+            Máy chủ ảo VPS SSD tốc độ cao, cài sẵn MicroEmulator & Tool Mod HSO tối ưu nhẹ nhất. Treo từ 40 đến 160 acc mượt mà, quản lý từ xa qua điện thoại iPhone/Android.
+          </p>
+        </div>
+
+        <!-- SPECIAL PROMOTIONS BANNER -->
+        <div class="vps-promo-banner" id="vpsPromoBanner">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- DYNAMIC BILLING CYCLE SELECTOR -->
+        <div class="billing-cycle-wrap">
+          <div class="billing-cycle-title">
+            <span>⏱️</span> CHỌN THỜI HẠN THUÊ VPS ĐỂ NHẬN THÊM QUÀ TẶNG:
+          </div>
+          <div class="billing-cycle-tabs" id="vpsPeriodTabs">
+            <button class="cycle-tab-btn active" data-period="1" onclick="setVpsPeriod(1)">
+              <span class="cycle-title">1 Tháng</span>
+              <span class="cycle-tag">Chuẩn</span>
+            </button>
+            <button class="cycle-tab-btn" data-period="3" onclick="setVpsPeriod(3)">
+              <span class="cycle-title">3 Tháng</span>
+              <span class="cycle-tag badge-gold">TẶNG 1 AUTO</span>
+            </button>
+            <button class="cycle-tab-btn" data-period="6" onclick="setVpsPeriod(6)">
+              <span class="cycle-title">6 Tháng</span>
+              <span class="cycle-tag badge-cyan">TẶNG PROXY 6T</span>
+            </button>
+            <button class="cycle-tab-btn" data-period="12" onclick="setVpsPeriod(12)">
+              <span class="cycle-title">12 Tháng</span>
+              <span class="cycle-tag badge-vip">VIP FULL 3 AUTO</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- VPS PACKAGES GRID -->
+        <div class="vps-grid" id="vpsGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- 3 STEPS ONBOARDING GUIDE -->
+        <div class="vps-steps-container">
+          <div class="section-title-wrap" style="margin-bottom: 20px;">
+            <div class="vps-tag-badge">⚡ KÍCH HOẠT DỄ DÀNG</div>
+            <h3 class="steps-main-title">3 Bước Đơn Giản Để Bắt Đầu Treo VPS 24/24</h3>
+          </div>
+          <div class="vps-steps-grid">
+            <div class="step-card">
+              <div class="step-num">01</div>
+              <div class="step-icon">🖥️</div>
+              <h4>Chọn Gói Cấu Hình</h4>
+              <p>Chọn gói phù hợp với số lượng nick muốn treo (40 đến 160 acc) rồi bấm nhắn Zalo cho Văn Hưng.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">02</div>
+              <div class="step-icon">⚡</div>
+              <h4>Nhận Bàn Giao Sau 1 Phút</h4>
+              <p>Văn Hưng gửi ngay IP & mật khẩu quản trị, VPS đã cài sẵn MicroEmulator và Tool Mod HSO chạy mượt mà.</p>
+            </div>
+            <div class="step-card">
+              <div class="step-num">03</div>
+              <div class="step-icon">📱</div>
+              <h4>Quản Lý Treo Game 24/24</h4>
+              <p>Mở ứng dụng RD Client trên điện thoại (iPhone hoặc Android) kết nối vào điều khiển dàn acc mọi lúc mọi nơi.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- VPS PERKS INFO BOX -->
+        <div class="vps-features-box">
+          <div class="vps-feature-item">
+            <div class="vps-feat-icon">🚀</div>
+            <div class="vps-feat-text">
+              <h4>Tặng Tool Mod HSO Độc Quyền</h4>
+              <p>Tự động đánh quái, tự bơm máu/mana, tự nhặt đồ và tự gom tinh thạch.</p>
+            </div>
+          </div>
+          <div class="vps-feature-item">
+            <div class="vps-feat-icon">📱</div>
+            <div class="vps-feat-text">
+              <h4>Quản Lý Qua Điện Thoại</h4>
+              <p>Kết nối và điều khiển dàn acc mọi lúc mọi nơi bằng Remote Desktop trên iOS & Android.</p>
+            </div>
+          </div>
+          <div class="vps-feature-item">
+            <div class="vps-feat-icon">🔄</div>
+            <div class="vps-feat-text">
+              <h4>Tự Động Kết Nối Lại</h4>
+              <p>Tính năng Auto Reconnect tự vào lại game khi bảo trì máy chủ hoặc đứt cáp mạng.</p>
+            </div>
+          </div>
+          <div class="vps-feature-item">
+            <div class="vps-feat-icon">👑</div>
+            <div class="vps-feat-text">
+              <h4>Hỗ Trợ 1-1 Từ Văn Hưng</h4>
+              <p>Hỗ trợ setup từ A-Z, đổi mật khẩu quản trị riêng tư, cam kết 100% an toàn.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: DỊCH VỤ GAME HSO -->
+      <section id="tabDichVu" class="tab-content">
+        <div class="section-title-wrap">
+          <div class="vps-tag-badge">💎 UY TÍN 6 SERVER</div>
+          <h2 class="section-title">Dịch Vụ Game <span>Hiệp Sĩ Online Uy Tín Hàng Đầu</span></h2>
+          <p class="section-desc">
+            Cung cấp vàng số lượng lớn, nạp ngọc thẻ Carot, dịch vụ up thuê level, treo VPS auto 24/24 và nhận làm trung gian giao dịch an toàn tuyệt đối.
+          </p>
+        </div>
+
+        <div class="service-grid" id="serviceGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- INTERACTIVE CAROT CALCULATOR WIDGET -->
+        <div class="carot-calc-card" id="carotCalculator">
+          <div class="calc-header">
+            <div>
+              <span class="vps-tag-badge">💎 CÔNG CỤ TÍNH NHANH THÔNG MINH</span>
+              <h3 class="calc-title">Bảng Tính Quy Đổi Ngọc & Tiết Kiệm Thẻ Carot</h3>
+              <p class="calc-desc">Bấm chọn nhanh mệnh giá thẻ bên dưới để xem ngay số tiền chiết khấu thực trả và số lượng ngọc nhận được:</p>
+            </div>
+          </div>
+
+          <div class="calc-body">
+            <!-- Quick select buttons -->
+            <div class="calc-chips-row">
+              <button class="calc-chip" onclick="selectCalcDenom(10000)">10.000 đ</button>
+              <button class="calc-chip" onclick="selectCalcDenom(20000)">20.000 đ</button>
+              <button class="calc-chip" onclick="selectCalcDenom(50000)">50.000 đ</button>
+              <button class="calc-chip active" onclick="selectCalcDenom(100000)">100.000 đ</button>
+              <button class="calc-chip" onclick="selectCalcDenom(200000)">200.000 đ</button>
+              <button class="calc-chip" onclick="selectCalcDenom(500000)">500.000 đ</button>
+              <button class="calc-chip" onclick="selectCalcDenom(1000000)">1.000.000 đ</button>
+            </div>
+
+            <!-- Live Calculation Metrics Display -->
+            <div class="calc-metrics-grid">
+              <div class="calc-metric-box metric-pay">
+                <span class="c-label">💰 GIÁ BẠN TRẢ</span>
+                <span class="c-value" id="calcResPay">85.500 đ</span>
+                <span class="c-sub" id="calcResSave">Tiết kiệm: 14.500 đ (14.5%)</span>
+              </div>
+              <div class="calc-metric-box metric-base">
+                <span class="c-label">💎 NGỌC GỐC</span>
+                <span class="c-value" id="calcResBase">195</span>
+                <span class="c-sub">Ngày thường</span>
+              </div>
+              <div class="calc-metric-box metric-x2">
+                <span class="c-label">🔥 KHUYẾN MÃI X2</span>
+                <span class="c-value" id="calcResX2">345</span>
+                <span class="c-sub">+150 ngọc bonus</span>
+              </div>
+              <div class="calc-metric-box metric-x3">
+                <span class="c-label">👑 KHUYẾN MÃI X3</span>
+                <span class="c-value" id="calcResX3">495</span>
+                <span class="c-sub">Mốc siêu hời!</span>
+              </div>
+              <div class="calc-metric-box metric-first">
+                <span class="c-label">✨ X2 NẠP ĐẦU</span>
+                <span class="c-value" id="calcResFirst">390</span>
+                <span class="c-sub">Áp dụng lần đầu</span>
+              </div>
+            </div>
+
+            <div class="calc-cta-row">
+              <a href="https://zalo.me/0996548564" target="_blank" class="btn-primary calc-zalo-cta" id="calcZaloCta">
+                💬 Nhắn Zalo Nạp Mốc Này Ngay (Văn Hưng: 0996.548.564)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CAROT GEM CONVERSION TABLE -->
+        <div class="carot-table-wrapper" id="carotConversionSection">
+          <div class="carot-table-header">
+            <div>
+              <span class="vps-tag-badge">💎 BẢNG QUY ĐỔI LƯỢNG / NGỌC SHOP</span>
+              <h3 class="carot-heading">Bảng Giá Thẻ Carot & Tỉ Lệ Nhận Ngọc HSO (Kèm KM x2, x3)</h3>
+              <p class="carot-sub">
+                Mệnh giá thẻ Carot Teamobi nạp ngọc, nhận trọn vẹn số ngọc khi tham gia các sự kiện khuyến mãi x2, x3 hoặc x2 nạp lần đầu!
+              </p>
+            </div>
+            <a href="https://zalo.me/0996548564?text=Chào Văn Hưng, mình muốn mua thẻ Carot nạp ngọc HSO" target="_blank" class="btn-primary carot-cta-top">
+              💬 Nạp Qua Zalo Ngay
+            </a>
+          </div>
+
+          <!-- Mobile Swipe Indicator Hint -->
+          <div class="mobile-swipe-hint">
+            <span>👉</span> Vuốt ngang bảng để xem đủ các mốc khuyến mãi x2, x3 & bấm nạp ngay
+          </div>
+
+          <div class="carot-table-scroll">
+            <table class="carot-gem-table">
+              <thead>
+                <tr>
+                  <th>MỆNH GIÁ</th>
+                  <th>GIÁ BÁN SHOP</th>
+                  <th>NGỌC GỐC</th>
+                  <th>KM X2 🔥</th>
+                  <th>KM X3 👑</th>
+                  <th>X2 NẠP ĐẦU ✨</th>
+                  <th>HÀNH ĐỘNG</th>
+                </tr>
+              </thead>
+              <tbody id="carotTableBody">
+                <!-- Injected dynamically by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="mainFooter">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-title">
+            <span class="brand-ico">⚔️</span> VANHUNG VPS & DỊCH VỤ GAME
+          </div>
+          <p>
+            Hệ thống cho thuê máy chủ ảo VPS chuyên dụng treo game Hiệp Sĩ Online 24/24 và cung cấp dịch vụ game HSO 6 server uy tín hàng đầu. Hỗ trợ kỹ thuật 24/7 trực tiếp từ Văn Hưng.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Liên Kết Nhanh</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="switchTab('tabVps')">Thuê VPS Mod HSO (Giá Rẻ)</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('tabDichVu')">Dịch Vụ Game HSO</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('tabDichVu')">Bảng Quy Đổi Ngọc Thẻ Carot</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kênh Hỗ Trực Tuyến</h4>
+          <ul class="footer-links">
+            <li><a href="https://zalo.me/0996548564" id="footerZalo" target="_blank" class="footer-zalo-link">💬 Chat Zalo Văn Hưng</a></li>
+            <li>Hotline / Zalo: <span id="footerPhone" style="color:#fff; font-weight:700;">099.654.8564</span></li>
+            <li>Kỹ Thuật Viên: <span style="color:var(--primary-gold-light); font-weight:700;">Văn Hưng</span></li>
+            <li>Thời gian làm việc: <span style="color:var(--neon-green); font-weight:700;">24/7/365</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 VanHungVPS Portal. Powered by GitHub Pages. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE BOTTOM QUICK BAR (THÂN THIỆN ĐIỆN THOẠI) -->
+  <div class="mobile-bottom-nav">
+    <button class="mobile-nav-btn active" onclick="switchTab('tabVps')" id="mobNavVps">
+      <span class="mob-icon">🖥️</span>
+      <span class="mob-text">Thuê VPS</span>
+    </button>
+    <button class="mobile-nav-btn" onclick="switchTab('tabDichVu')" id="mobNavDichVu">
+      <span class="mob-icon">💎</span>
+      <span class="mob-text">Dịch Vụ & Thẻ</span>
+    </button>
+    <a href="https://zalo.me/0996548564" target="_blank" class="mobile-nav-btn mob-zalo-btn">
+      <span class="mob-icon">💬</span>
+      <span class="mob-text">Zalo Văn Hưng</span>
+    </a>
+  </div>
+
+  <!-- FLOATING QUICK ZALO CTA (DESKTOP / TABLET) -->
+  <a href="https://zalo.me/0996548564" target="_blank" class="floating-zalo-btn" id="floatZaloBtn" title="Chat Zalo ngay với Văn Hưng">
+    <div class="floating-pulse-ring"></div>
+    <div class="floating-icon">💬</div>
+    <div class="floating-label">
+      <span class="fl-status">Trực tuyến 24/7</span>
+      <span class="fl-name">Zalo: 0996548564</span>
+    </div>
+  </a>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

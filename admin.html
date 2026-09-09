@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trình Quản Trị - HSO Community</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-wrapper {
+      padding: 40px 0 80px;
+    }
+    .admin-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-glass);
+      padding-bottom: 16px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-glass);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary-gold);
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+    .admin-table th, .admin-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .admin-table th {
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--primary-gold-light);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    .btn-action-sm {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+    .btn-sold {
+      background: #eab308;
+      color: #000;
+    }
+    .btn-delete {
+      background: #ef4444;
+      color: #fff;
+    }
+    .export-box {
+      background: #090d1a;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 40px;
+    }
+    .code-preview {
+      width: 100%;
+      height: 200px;
+      background: #040711;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #a5f3fc;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      margin: 12px 0;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">⚙️</div>
+        <div class="brand-text">
+          <h1>HSO ADMIN PANEL</h1>
+          <p>QUẢN LÝ DỮ LIỆU SHOP GITHUB PAGES</p>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn-primary" style="padding: 8px 18px; font-size: 13px;">
+          👁️ Xem Trang Chủ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-wrapper">
+    <div class="container">
+      
+      <!-- CẤU HÌNH SHOP & THANH TOÁN -->
+      <div class="admin-card">
+        <div class="admin-header">
+          <h2 style="font-size: 18px; color: #fff;">1. Cấu Hình Thông Tin Shop & VietQR</h2>
+          <button class="btn-primary" onclick="saveShopConfig()" style="padding: 6px 16px; font-size: 12px;">
+            Lưu Cấu Hình
+          </button>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Tên Shop</label>
+            <input type="text" id="cfgShopName">
+          </div>
+          <div class="form-group">
+            <label>Số Zalo Liên Hệ</label>
+            <input type="text" id="cfgZaloNumber">
+          </div>
+          <div class="form-group">
+            <label>Mã Ngân Hàng (MB, VCB, TCB...)</label>
+            <input type="text" id="cfgBankId">
+          </div>
+          <div class="form-group">
+            <label>Số Tài Khoản Nhận Tiền</label>
+            <input type="text" id="cfgAccountNo">
+          </div>
+          <div class="form-group">
+            <label>Tên Chủ Tài Khoản (Không dấu)</label>
+            <input type="text" id="cfgAccountName">
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM THÊM ACC MỚI -->
+      <div class="admin-card">
+        <div class="admin-header">
+          <h2 style="font-size: 18px; color: #fff;">2. Thêm Tài Khoản (Acc) Mới</h2>
+          <button class="btn-primary" onclick="addNewAccount()" style="padding: 8px 20px; font-size: 13px;">
+            ➕ Thêm Vào Danh Sách
+          </button>
+        </div>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Mã Acc (VD: HSO-106)</label>
+            <input type="text" id="newAccId" placeholder="HSO-106">
+          </div>
+          <div class="form-group">
+            <label>Server</label>
+            <select id="newAccServer">
+              <option value="Chiến Thần">Chiến Thần</option>
+              <option value="Rồng Lửa">Rồng Lửa</option>
+              <option value="Phượng Hoàng">Phượng Hoàng</option>
+              <option value="Nhân Mã">Nhân Mã</option>
+              <option value="Kì Lân">Kì Lân</option>
+              <option value="Thiên Hà (new)">Thiên Hà (new)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Phái</label>
+            <select id="newAccClass">
+              <option value="Chiến Binh">Chiến Binh</option>
+              <option value="Pháp Sư">Pháp Sư</option>
+              <option value="Sát Thủ">Sát Thủ</option>
+              <option value="Xạ Thủ">Xạ Thủ</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Đệ Tử</label>
+            <select id="newAccDetu">
+              <option value="Có">Có Đệ Tử</option>
+              <option value="Không">Không Đệ Tử</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Cấp Độ (Level)</label>
+            <input type="text" id="newAccLevel" value="90 - MĐ +7">
+          </div>
+          <div class="form-group">
+            <label>Giá Bán (VNĐ)</label>
+            <input type="number" id="newAccPrice" placeholder="500000">
+          </div>
+          <div class="form-group">
+            <label>Giá Gốc / Cũ (Tùy chọn)</label>
+            <input type="number" id="newAccOldPrice" placeholder="650000">
+          </div>
+          <div class="form-group">
+            <label>Huy Hiệu (Badge)</label>
+            <select id="newAccBadge">
+              <option value="HOT">HOT</option>
+              <option value="MỚI">MỚI</option>
+              <option value="GIẢM GIÁ">GIẢM GIÁ</option>
+              <option value="VIP">VIP</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ảnh Minh Họa</label>
+            <input type="text" id="newAccImage" value="assets/accounts/acc_5239.webp" placeholder="assets/accounts/acc_xxx.webp">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label>Tiêu Đề Acc</label>
+          <input type="text" id="newAccTitle" placeholder="Ví dụ: Chiến Binh Lv120 - Set Cam +14 Full Khảm...">
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Sát Thương</label>
+            <input type="text" id="newAccDame" value="120,000">
+          </div>
+          <div class="form-group">
+            <label>Máu (HP)</label>
+            <input type="text" id="newAccHp" value="400,000">
+          </div>
+          <div class="form-group">
+            <label>Giáp</label>
+            <input type="text" id="newAccDef" value="35,000">
+          </div>
+          <div class="form-group">
+            <label>Chí Mạng</label>
+            <input type="text" id="newAccCrit" value="50%">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label>Trang Bị Nổi Bật (Mỗi món cách nhau bởi dấu phẩy , )</label>
+          <input type="text" id="newAccGear" placeholder="Vũ khí +15, Giáp +14, Hài Thần Tốc, Full Trang Sức...">
+        </div>
+
+        <div class="form-group">
+          <label>Mô Tả Chi Tiết</label>
+          <textarea id="newAccDesc" rows="2" placeholder="Thông tin trắng sạch, đổi SĐT nhanh chóng..."></textarea>
+        </div>
+      </div>
+
+      <!-- DANH SÁCH ACC HIỆN TẠI -->
+      <div class="admin-card">
+        <div class="admin-header">
+          <h2 style="font-size: 18px; color: #fff;">3. Quản Lý Danh Sách Acc Đang Bán</h2>
+          <span id="adminTotalCount" style="color: var(--neon-cyan); font-weight: 700;"></span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Mã</th>
+                <th>Tiêu Đề</th>
+                <th>Server</th>
+                <th>Phái</th>
+                <th>Đệ Tử</th>
+                <th>Giá Bán</th>
+                <th>Trạng Thái</th>
+                <th>Hành Động</th>
+              </tr>
+            </thead>
+            <tbody id="adminAccTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- XUẤT DỮ LIỆU ĐỂ CẬP NHẬT LÊN GITHUB PAGES -->
+      <div class="export-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div>
+            <h2 style="color: var(--neon-cyan); font-size: 20px;">🚀 4. Xuất Dữ Liệu Lên GitHub Pages</h2>
+            <p style="color: var(--text-muted); font-size: 13px;">
+              Sau khi thêm hoặc sửa acc, bạn chỉ cần bấm nút bên dưới để tải file <strong>data.js</strong> về hoặc Copy code dán đè vào file <code>data.js</code> trên GitHub là web tự cập nhật ngay!
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn-primary" onclick="copyDataCode()">📋 Copy Code</button>
+            <button class="btn-secondary" onclick="downloadDataJs()">💾 Tải File data.js</button>
+          </div>
+        </div>
+
+        <textarea id="codePreview" class="code-preview" readonly></textarea>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script>
+    let localData = JSON.parse(JSON.stringify(SHOP_DATA));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadShopConfigToForm();
+      renderAdminTable();
+      updateExportPreview();
+    });
+
+    function loadShopConfigToForm() {
+      const cfg = localData.config;
+      document.getElementById('cfgShopName').value = cfg.shopName || '';
+      document.getElementById('cfgZaloNumber').value = cfg.zaloNumber || '';
+      document.getElementById('cfgBankId').value = cfg.bank.bankId || 'MB';
+      document.getElementById('cfgAccountNo').value = cfg.bank.accountNo || '';
+      document.getElementById('cfgAccountName').value = cfg.bank.accountName || '';
+    }
+
+    function saveShopConfig() {
+      localData.config.shopName = document.getElementById('cfgShopName').value.trim();
+      localData.config.zaloNumber = document.getElementById('cfgZaloNumber').value.trim();
+      localData.config.zaloLink = `https://zalo.me/${localData.config.zaloNumber}`;
+      localData.config.bank.bankId = document.getElementById('cfgBankId').value.trim();
+      localData.config.bank.accountNo = document.getElementById('cfgAccountNo').value.trim();
+      localData.config.bank.accountName = document.getElementById('cfgAccountName').value.trim().toUpperCase();
+
+      updateExportPreview();
+      alert('Đã lưu thông tin cấu hình! Hãy copy code hoặc tải file data.js về để cập nhật lên web.');
+    }
+
+    function renderAdminTable() {
+      const tbody = document.getElementById('adminAccTableBody');
+      const totalSpan = document.getElementById('adminTotalCount');
+      totalSpan.textContent = `Tổng: ${localData.accounts.length} Acc`;
+
+      tbody.innerHTML = localData.accounts.map((acc, index) => {
+        const isSold = acc.status === 'sold';
+        return `
+          <tr>
+            <td style="font-family: monospace; font-weight: 700; color: #fff;">#${acc.id}</td>
+            <td style="color: #cbd5e1; max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${acc.title}</td>
+            <td><span style="color: var(--neon-cyan);">${acc.server}</span></td>
+            <td>${acc.class} (Lv ${acc.level})</td>
+            <td><span style="color: ${acc.detu === 'Có' ? 'var(--neon-green)' : '#94a3b8'}; font-weight:700;">${acc.detu || 'Không'}</span></td>
+            <td style="color: var(--primary-gold-light); font-weight: 700;">${acc.price.toLocaleString('vi-VN')} đ</td>
+            <td>
+              <span style="padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; background: ${isSold ? '#475569' : '#10b981'}; color: ${isSold ? '#fff' : '#000'};">
+                ${isSold ? 'ĐÃ BÁN' : 'CÒN HÀNG'}
+              </span>
+            </td>
+            <td>
+              <button class="btn-action-sm btn-sold" onclick="toggleSold(${index})">
+                ${isSold ? 'Mở Bán' : 'Đã Bán'}
+              </button>
+              <button class="btn-action-sm btn-delete" onclick="deleteAccount(${index})">
+                Xóa
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleSold(index) {
+      localData.accounts[index].status = localData.accounts[index].status === 'sold' ? 'available' : 'sold';
+      renderAdminTable();
+      updateExportPreview();
+    }
+
+    function deleteAccount(index) {
+      if (confirm(`Bạn có chắc muốn xóa acc #${localData.accounts[index].id} không?`)) {
+        localData.accounts.splice(index, 1);
+        renderAdminTable();
+        updateExportPreview();
+      }
+    }
+
+    function addNewAccount() {
+      const id = document.getElementById('newAccId').value.trim();
+      const title = document.getElementById('newAccTitle').value.trim();
+      const price = parseInt(document.getElementById('newAccPrice').value);
+      const oldPrice = parseInt(document.getElementById('newAccOldPrice').value) || null;
+
+      if (!id || !title || isNaN(price)) {
+        alert('Vui lòng nhập đầy đủ Mã Acc, Tiêu đề và Giá bán!');
+        return;
+      }
+
+      const gearRaw = document.getElementById('newAccGear').value.trim();
+      const gearList = gearRaw ? gearRaw.split(',').map(s => s.trim()).filter(Boolean) : ["Đang cập nhật trang bị"];
+
+      const newAcc = {
+        id: id,
+        title: title,
+        server: document.getElementById('newAccServer').value,
+        class: document.getElementById('newAccClass').value,
+        detu: document.getElementById('newAccDetu').value,
+        level: document.getElementById('newAccLevel').value || "100",
+        price: price,
+        oldPrice: oldPrice,
+        status: "available",
+        badge: document.getElementById('newAccBadge').value,
+        image: document.getElementById('newAccImage').value,
+        gear: gearList,
+        stats: {
+          dame: document.getElementById('newAccDame').value.trim(),
+          hp: document.getElementById('newAccHp').value.trim(),
+          def: document.getElementById('newAccDef').value.trim(),
+          crit: document.getElementById('newAccCrit').value.trim()
+        },
+        description: document.getElementById('newAccDesc').value.trim() || "Thông tin chính chủ trắng sạch."
+      };
+
+      localData.accounts.unshift(newAcc);
+      renderAdminTable();
+      updateExportPreview();
+
+      alert(`Đã thêm thành công Acc #${id}! Hãy copy code để cập nhật.`);
+      document.getElementById('newAccId').value = '';
+      document.getElementById('newAccTitle').value = '';
+      document.getElementById('newAccPrice').value = '';
+    }
+
+    function updateExportPreview() {
+      const preview = document.getElementById('codePreview');
+      preview.value = `const SHOP_DATA = ${JSON.stringify(localData, null, 2)};`;
+    }
+
+    function copyDataCode() {
+      const preview = document.getElementById('codePreview');
+      preview.select();
+      navigator.clipboard.writeText(preview.value).then(() => {
+        alert('Đã sao chép toàn bộ code! Giờ bạn chỉ cần dán đè vào file data.js.');
+      });
+    }
+
+    function downloadDataJs() {
+      const code = document.getElementById('codePreview').value;
+      const blob = new Blob([code], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'data.js';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
