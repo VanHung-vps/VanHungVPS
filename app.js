@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
   selectCalcDenom(100000);
   setupTabSwitching();
   setupModalListeners();
+  initCyberCanvas();
+  setupMouseSpotlight();
+  setupFaqAccordion();
+  startSocialProofLoop();
+  setupScrollProgress();
 });
 
 // 1. ÁP DỤNG CẤU HÌNH SHOP LÊN GIAO DIỆN
@@ -394,4 +399,163 @@ function showToast(message) {
 
 function formatVND(amount) {
   return amount.toLocaleString('vi-VN') + ' đ';
+}
+
+// 7. HIỆU ỨNG HẠT VŨ TRỤ CYBER BACKGROUND CANVAS
+function initCyberCanvas() {
+  const canvas = document.getElementById('bgCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  const particles = [];
+  const particleCount = window.innerWidth < 768 ? 30 : 65;
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      radius: Math.random() * 1.6 + 0.6,
+      color: Math.random() > 0.4 ? 'rgba(56, 189, 248,' : 'rgba(245, 158, 11,',
+      alpha: Math.random() * 0.45 + 0.15
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `${p.color} ${p.alpha})`;
+      ctx.fill();
+
+      // Connect near particles with faint line
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.09 * (1 - dist / 100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+}
+
+// 8. CARD MOUSE SPOTLIGHT (ÁNH SÁNG THEO CON TRỎ CHUỘT)
+function setupMouseSpotlight() {
+  document.addEventListener('mousemove', (e) => {
+    document.querySelectorAll('.vps-card, .hero-main-card, .service-card, .carot-calc-card, .review-card').forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+}
+
+// 9. FAQ ACCORDION
+function setupFaqAccordion() {
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    const q = item.querySelector('.faq-question');
+    if (!q) return;
+    q.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      items.forEach(i => i.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+}
+
+// 10. REALTIME SOCIAL PROOF TOAST (THÔNG BÁO HOẠT ĐỘNG THỜI GIAN THỰC)
+const SOCIAL_SALES = [
+  { icon: '⚡', title: 'Thuê VPS Thành Công', desc: 'Game thủ SV Rồng Lửa vừa thuê VPS Gói 2 (50 Acc)' },
+  { icon: '💎', title: 'Nạp Thẻ Carot Thành Công', desc: 'Khách vừa mua thẻ Carot 500k (Nhận 2.530 Ngọc KM)' },
+  { icon: '👑', title: 'Kích Hoạt VPS Siêu Tốc', desc: 'Bang hội SV Chiến Thần vừa gia hạn VPS Gói 3 (80 Acc)' },
+  { icon: '🎁', title: 'Nhận Ưu Đãi Tặng Tool', desc: 'Khách thuê 6 tháng được tặng kèm Tool Đập Đồ & Proxy sạch' },
+  { icon: '💰', title: 'Giao Dịch Vàng 6 SV', desc: 'Vừa bàn giao 500 Tr Vàng tại Server Nhân Mã uy tín' }
+];
+
+let saleToastTimeout = null;
+function startSocialProofLoop() {
+  const toast = document.getElementById('liveSaleToast');
+  if (!toast) return;
+
+  let index = 0;
+  function showNextSale() {
+    const item = SOCIAL_SALES[index % SOCIAL_SALES.length];
+    index++;
+
+    const avatar = document.getElementById('toastAvatar');
+    const title = document.getElementById('toastTitle');
+    const desc = document.getElementById('toastDesc');
+
+    if (avatar) avatar.textContent = item.icon;
+    if (title) title.textContent = item.title;
+    if (desc) desc.textContent = item.desc;
+
+    toast.classList.add('show');
+
+    saleToastTimeout = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 4500);
+  }
+
+  setTimeout(showNextSale, 4000);
+  setInterval(showNextSale, 16000);
+}
+
+window.closeToast = function() {
+  const toast = document.getElementById('liveSaleToast');
+  if (toast) toast.classList.remove('show');
+  if (saleToastTimeout) clearTimeout(saleToastTimeout);
+};
+
+// 11. BACK TO TOP
+window.scrollToTop = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+function setupScrollProgress() {
+  const btn = document.getElementById('backToTopBtn');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 350) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
 }

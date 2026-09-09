@@ -23,6 +23,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
 </head>
 <body>
+  <!-- BACKGROUND CYBER PARTICLES CANVAS -->
+  <canvas id="bgCanvas" class="cyber-bg-canvas"></canvas>
 
   <!-- NAVBAR -->
   <header class="navbar" id="topNavbar">
@@ -493,6 +495,104 @@
           </div>
         </div>
       </section>
+
+      <!-- TESTIMONIALS (ĐÁNH GIÁ TỪ ANH EM GAME THỦ 6 SERVER) -->
+      <section class="reviews-section" id="reviewsSection">
+        <div class="section-title-wrap">
+          <div class="vps-tag-badge">⭐ ĐÁNH GIÁ THỰC TẾ</div>
+          <h2 class="section-title">Game Thủ 6 Server Nói Gì Về <span>VanHungVPS</span></h2>
+          <p class="section-desc">Hơn 500+ anh em cày cuốc, chủ dàn farm và bang hội đã tin tưởng sử dụng dịch vụ trong suốt thời gian qua.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text">"Mình thuê gói VPS 2-4 treo dàn 80 acc cày vàng tổ đội cả tháng nay không hề bị văng. Tool Mod tự reconnect cực kỳ thông minh!"</p>
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">⚔️</div>
+              <div>
+                <strong>Bảo Nam</strong>
+                <small>Server Chiến Thần • Bang Chủ HSO</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card highlight">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text">"Mua thẻ Carot 500k nạp ngọc đợt khuyến mãi x2 chiết khấu cao 14.5%, rẻ hơn hẳn nạp thẳng. Văn Hưng gửi mã seri và pin siêu nhanh."</p>
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">💎</div>
+              <div>
+                <strong>Hoàng Long</strong>
+                <small>Server Rồng Lửa • VIP Nạp Ngọc</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+            <p class="review-text">"Lần đầu dùng VPS nhưng được anh Văn Hưng cài sẵn hết MicroEmulator với Tool đập đồ, chỉ việc mở iPhone lên theo dõi, rất tiện lợi!"</p>
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">📱</div>
+              <div>
+                <strong>Minh Quân</strong>
+                <small>Server Thiên Hà • Cày Cuốc 24/24</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ ACCORDION SECTION (CÂU HỎI THƯỜNG GẶP) -->
+      <section class="faq-section" id="faqSection">
+        <div class="section-title-wrap">
+          <div class="vps-tag-badge">❓ GIẢI ĐÁP THẮC MẮC</div>
+          <h2 class="section-title">Câu Hỏi Thường Gặp Khi <span>Thuê VPS Mod HSO</span></h2>
+          <p class="section-desc">Mọi thông tin bạn cần biết trước khi bắt đầu treo game 24/24 trên hệ thống VanHungVPS.</p>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          <div class="faq-item active">
+            <div class="faq-question">
+              <span>Treo nhiều acc trên VPS có bị khóa nick hay ban IP không?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+              <p>Hoàn toàn không! VPS cấp phát IP sạch riêng biệt 100%, đồng thời khi thuê từ 6 tháng trở lên bạn được tặng thêm Proxy IPv4 sạch chống trùng lặp IP tuyệt đối, bảo đảm an toàn cho tài sản và dàn nick của bạn.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Tôi có thể quản lý và điều khiển VPS trên điện thoại được không?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+              <p>Có! Bạn chỉ cần tải ứng dụng <strong>RD Client (Remote Desktop)</strong> miễn phí trên App Store (iOS) hoặc Google Play (Android). Văn Hưng sẽ hướng dẫn bạn kết nối chỉ trong 30 giây là có thể xem màn hình và điều khiển mọi lúc mọi nơi.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Nếu game bảo trì hoặc rớt mạng VPS thì dàn acc có bị tắt không?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+              <p>Không! Tool Mod HSO độc quyền tặng kèm có tính năng <strong>Auto Reconnect thông minh</strong>. Khi hết thời gian bảo trì máy chủ hoặc mạng ổn định trở lại, tool sẽ tự động đăng nhập lại dàn nick và tiếp tục cày cuốc mà bạn không cần đụng tay vào.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Sau khi thanh toán xong thì bao lâu tôi nhận được VPS?</span>
+              <span class="faq-chevron">▾</span>
+            </div>
+            <div class="faq-answer">
+              <p>Chỉ sau <strong>1 phút</strong>! Văn Hưng sẽ gửi ngay cho bạn địa chỉ IP, tên đăng nhập và mật khẩu riêng tư. VPS đã được cài sẵn toàn bộ phần mềm cần thiết, bạn chỉ cần nhập nick vào là chạy ngay.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -560,6 +660,21 @@
       <span class="fl-name">Zalo: 0996548564</span>
     </div>
   </a>
+
+  <!-- LIVE SOCIAL PROOF NOTIFICATION TOAST -->
+  <div class="live-proof-toast" id="liveSaleToast">
+    <div class="toast-avatar" id="toastAvatar">⚡</div>
+    <div class="toast-body">
+      <div class="toast-title" id="toastTitle">Kích hoạt VPS thành công</div>
+      <div class="toast-desc" id="toastDesc">Khách vừa thuê VPS Gói 2 (50 Acc)</div>
+    </div>
+    <button class="toast-close" onclick="closeToast()">&times;</button>
+  </div>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top-btn" id="backToTopBtn" onclick="scrollToTop()" title="Lên đầu trang">
+    <span class="top-arrow">▲</span>
+  </button>
 
   <!-- Scripts -->
   <script src="data.js"></script>
