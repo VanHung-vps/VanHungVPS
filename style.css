@@ -1416,6 +1416,101 @@ body {
   font-style: italic;
 }
 
+/* Custom Gold Chat-Only Card */
+.service-card-gold {
+  border-color: rgba(234, 179, 8, 0.28);
+  background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.08), transparent 60%), var(--bg-card);
+}
+
+.service-card-gold:hover {
+  border-color: rgba(234, 179, 8, 0.55);
+  box-shadow: 0 16px 36px -10px rgba(234, 179, 8, 0.28);
+}
+
+.badge-gold-tag {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.service-chat-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(234, 179, 8, 0.07);
+  border: 1px dashed rgba(234, 179, 8, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.service-chat-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+  animation: chatPulse 2s infinite ease-in-out;
+}
+
+@keyframes chatPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.service-chat-headline {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fef08a;
+  margin-bottom: 4px;
+}
+
+.service-chat-sub {
+  font-size: 11.5px;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.service-gold-contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-size: 11.5px;
+  color: #e2e8f0;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.service-gold-contact-chip .chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  display: inline-block;
+}
+
+.service-gold-contact-chip strong {
+  color: #38bdf8;
+}
+
+.btn-gold-action {
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%) !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 16px rgba(234, 179, 8, 0.35) !important;
+}
+
+.btn-gold-action:hover {
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%) !important;
+  box-shadow: 0 6px 22px rgba(234, 179, 8, 0.5) !important;
+  transform: translateY(-2px);
+}
+
 /* ==========================================================================
    INTERACTIVE CAROT CALCULATOR WIDGET (MÁY TÍNH QUY ĐỔI NGỌC)
    ========================================================================== */

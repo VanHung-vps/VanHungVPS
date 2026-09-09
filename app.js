@@ -235,27 +235,46 @@ function renderServices(services) {
   if (!container || !services) return;
 
   container.innerHTML = services.map(srv => {
-    const zaloMsg = encodeURIComponent(`Chào shop, mình muốn sử dụng dịch vụ: ${srv.title}`);
+    const isGold = srv.id === 'SV-GOLD' || srv.directChatOnly;
+    const zaloMsg = encodeURIComponent(
+      isGold
+        ? `Chào Văn Hưng, mình muốn hỏi tỉ lệ và mua vàng HSO 6 Server!`
+        : `Chào shop, mình muốn sử dụng dịch vụ: ${srv.title}`
+    );
     const zaloUrl = `https://zalo.me/${SHOP_DATA.config.zaloNumber}?text=${zaloMsg}`;
 
     return `
-      <div class="service-card">
+      <div class="service-card ${isGold ? 'service-card-gold' : ''}">
         <div class="service-top">
           <div class="service-icon">${srv.icon}</div>
-          <span class="badge-tag badge-discount">${srv.badge}</span>
+          <span class="badge-tag ${isGold ? 'badge-gold-tag' : 'badge-discount'}">${srv.badge}</span>
         </div>
 
         <h3 class="service-title">${srv.title}</h3>
         <p class="service-desc">${srv.desc}</p>
 
-        <ul class="service-rates">
-          ${srv.rates.map(r => `<li>${r}</li>`).join('')}
-        </ul>
+        ${isGold ? `
+          <div class="service-chat-box">
+            <div class="service-chat-icon">💬</div>
+            <div class="service-chat-info">
+              <span class="service-chat-headline">Nhắn Tin Nhận Tỉ Lệ Trực Tiếp</span>
+              <p class="service-chat-sub">Tỉ lệ vàng biến động theo ngày. Anh em vui lòng nhắn tin trực tiếp để nhận báo giá và tỉ lệ tốt nhất!</p>
+            </div>
+          </div>
+          <div class="service-gold-contact-chip">
+            <span class="chip-dot"></span> Zalo / Hotline: <strong>099.654.8564</strong>
+          </div>
+        ` : `
+          ${srv.rates && srv.rates.length > 0 ? `
+            <ul class="service-rates">
+              ${srv.rates.map(r => `<li>${r}</li>`).join('')}
+            </ul>
+          ` : ''}
+          ${srv.note ? `<div class="service-note">📌 ${srv.note}</div>` : ''}
+        `}
 
-        <div class="service-note">📌 ${srv.note}</div>
-
-        <a href="${zaloUrl}" target="_blank" class="btn-primary" style="margin-top:auto; justify-content:center; padding:10px 16px; font-size:13px;">
-          💬 Đặt Dịch Vụ Qua Zalo
+        <a href="${zaloUrl}" target="_blank" class="btn-primary ${isGold ? 'btn-gold-action' : ''}" style="margin-top:auto; justify-content:center; padding:11px 16px; font-size:13.5px; font-weight:700;">
+          💬 ${isGold ? 'Nhắn Tin Mua Vàng Zalo' : 'Đặt Dịch Vụ Qua Zalo'}
         </a>
       </div>
     `;

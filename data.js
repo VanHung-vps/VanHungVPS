@@ -25,14 +25,11 @@ const SHOP_DATA = {
       id: "SV-GOLD",
       title: "Bán Vàng HSO 6 Server",
       icon: "💰",
-      badge: "TỈ LỆ CAO",
-      desc: "Cung cấp vàng số lượng lớn cho cả 6 server: Chiến Thần, Rồng Lửa, Phượng Hoàng, Nhân Mã, Kì Lân, Thiên Hà.",
-      rates: [
-        "Server Chiến Thần, Rồng: 100k = 250 Tr Vàng",
-        "Server Nhân Mã, Phượng: 100k = 220 Tr Vàng",
-        "Server Kì Lân, Thiên Hà: 100k = 180 Tr Vàng"
-      ],
-      note: "Giao dịch nhanh tại Cây Cầu Làng Cối Xay Gió hoặc qua Rương Tiền."
+      badge: "NHẮN TIN BÁO GIÁ",
+      desc: "Cung cấp vàng số lượng lớn cho cả 6 server: Chiến Thần, Rồng Lửa, Phượng Hoàng, Nhân Mã, Kì Lân, Thiên Hà. Tỉ lệ vàng cập nhật theo ngày.",
+      directChatOnly: true,
+      rates: [],
+      note: ""
     },
     {
       id: "SV-CAROT",
