@@ -2133,42 +2133,40 @@ body {
     font-size: 9px;
   }
 
-  /* Compact Hero Visual Card on Mobile */
-  .hero-visual-card, .hero-art-frame {
-    min-height: 200px;
-    height: 200px;
-    border-radius: var(--radius-md);
+  /* Full Artwork Showcase on Mobile - Chuẩn tỉ lệ vuông, không bị crop chữ & số điện thoại */
+  .hero-visual-card {
+    width: 100%;
+    max-width: 360px;
+    margin: 8px auto 0;
+    min-height: unset !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-lg);
+    background: #070b18;
+    box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.8), 0 0 25px rgba(6, 182, 212, 0.2);
+    overflow: hidden;
   }
 
+  .hero-art-frame {
+    width: 100%;
+    height: 100%;
+    min-height: unset !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  /* Ẩn các huy hiệu che mặt và chữ Văn Hưng trên điện thoại */
   .art-floating-chip {
-    padding: 5px 8px;
-    border-radius: var(--radius-sm);
-  }
-
-  .art-floating-chip .chip-icon {
-    font-size: 14px;
-  }
-
-  .art-floating-chip .chip-info strong {
-    font-size: 10px;
-  }
-
-  .art-floating-chip .chip-info small {
-    font-size: 8.5px;
-  }
-
-  .chip-top-left {
-    top: 10px;
-    left: 10px;
-  }
-
-  .chip-bottom-right {
-    bottom: 10px;
-    right: 10px;
-  }
-
-  .chip-bottom-left, .chip-top-right {
-    display: none; /* Ẩn bớt 2 chip để khung ảnh hiệp sĩ trên điện thoại nhìn thoáng đẹp */
+    display: none !important;
   }
 
   /* Compact Trust Bar */
